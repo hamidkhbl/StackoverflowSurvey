@@ -1,7 +1,18 @@
 import numpy as np
 import pandas as pd
 
+
 def clean():
+    """
+    This method reads the 206, 2017 and 2019 survey data and performs following actions:
+        - Add year of the survey to dataset
+        - Remove records where remote column is null
+        - Unify column names
+        - Unify values for remote column (each year has it's own values)
+        - Removes records where job satisfaction is null
+    Returns:
+        a clean dataframe with 3 columns (Year of the study, Remote Options and Job Satisfaction)
+    """
     # read data
     df_2016 = pd.read_csv('2016 Stack Overflow Survey Responses.csv', encoding =  "ISO-8859-1", low_memory=False)
     df_2017 = pd.read_csv('survey_results_public_2017.csv', encoding =  "ISO-8859-1", low_memory=False)
@@ -57,6 +68,7 @@ def clean():
     df['CareerSat'].replace('Very dissatisfied',1, inplace = True)
 
     df['CareerSat'] = pd.to_numeric(df['CareerSat'], errors='coerce')
-    df_careerSat = df.groupby(['remote']).mean()['CareerSat']
-    return df_careerSat
-print(clean())
+
+    df = df[df.CareerSat.notna()]
+    #df_careerSat = df.groupby(['remote']).mean()['CareerSat']
+    return df
