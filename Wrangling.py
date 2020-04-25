@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 
-def cleanSat(year=2019):
+def clean_sat(year=2019):
     """
     This method reads the 206, 2017 and 2019 survey data and performs following actions:
         - Add year of the survey to dataset
@@ -84,3 +84,6 @@ def cleanSat(year=2019):
     
     return ret_df
 
+def clean_salary():
+
+def clean_predict():   
