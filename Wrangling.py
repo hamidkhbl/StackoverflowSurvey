@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 
-def clean():
+def clean(year=2019):
     """
     This method reads the 206, 2017 and 2019 survey data and performs following actions:
         - Add year of the survey to dataset
@@ -70,5 +70,16 @@ def clean():
     df['CareerSat'] = pd.to_numeric(df['CareerSat'], errors='coerce')
 
     df = df[df.CareerSat.notna()]
-    #df_careerSat = df.groupby(['remote']).mean()['CareerSat']
-    return df
+    
+    ret_df = df_2019_lim[df_2019_lim.CareerSat.notna()]
+
+    if year == 2016:
+        ret_df = df_2016_lim[df_2016_lim.CareerSat.notna()]
+
+    if year == 2017:
+        ret_df = df_2017_lim[df_2017_lim.CareerSat.notna()]
+
+    if year == 'all':
+        ret_df = df
+    
+    return ret_df
