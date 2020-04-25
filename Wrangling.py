@@ -86,4 +86,21 @@ def clean_sat(year=2019):
 
 def clean_salary():
 
-def clean_predict():   
+    # Read data
+    df_2016 = pd.read_csv('2016 Stack Overflow Survey Responses.csv', encoding =  "ISO-8859-1", low_memory=False)
+    df_2017 = pd.read_csv('survey_results_public_2017.csv', encoding =  "ISO-8859-1", low_memory=False) 
+
+    # Add year
+    df_2016['year'] = 2016
+    df_2017['year'] = 2017
+
+    # Remove null
+    df_2016 = df_2016[df_2016.remote.notna()]
+    df_2017 = df_2017[df_2017.HomeRemote.notna()]
+
+    df_2016_lim = df_2016[['year','remote','Salary']]
+    df_2016_lim.rename(columns = {'job_satisfaction':'CareerSat'}, inplace =True)
+
+    df_2017_lim = df_2017[['year','HomeRemote','Salary']]
+    df_2017_lim.rename(columns = {'HomeRemote':'remote', 'CareerSatisfaction':'CareerSat'}, inplace =True)
+  
