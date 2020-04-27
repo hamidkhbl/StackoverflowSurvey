@@ -19,7 +19,6 @@ def downloadCSV(path):
     """
     download = not os.path.isdir(path[0])
     # check if files exist
-
     if download:
         # download file
         r = requests.get(path[1])
