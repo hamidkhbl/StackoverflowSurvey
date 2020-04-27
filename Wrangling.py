@@ -14,9 +14,9 @@ def clean_sat(year=2019):
         a clean dataframe with 3 columns (Year of the study, Remote Options and Job Satisfaction)
     """
     # read data
-    df_2016 = pd.read_csv('2016 Stack Overflow Survey Responses.csv', encoding =  "ISO-8859-1", low_memory=False)
-    df_2017 = pd.read_csv('survey_results_public_2017.csv', encoding =  "ISO-8859-1", low_memory=False)
-    df_2019 = pd.read_csv('survey_results_public_2019.csv', encoding =  "ISO-8859-1", low_memory=False)
+    df_2016 = pd.read_csv('2016_survey_results_public.csv', encoding =  "ISO-8859-1", low_memory=False)
+    df_2017 = pd.read_csv('2017_survey_results_public.csv', encoding =  "ISO-8859-1", low_memory=False)
+    df_2019 = pd.read_csv('2019_survey_results_public.csv', encoding =  "ISO-8859-1", low_memory=False)
 
     # Add year
     df_2016['year'] = 2016
@@ -87,8 +87,8 @@ def clean_sat(year=2019):
 def clean_salary():
 
     # Read data
-    df_2016 = pd.read_csv('2016 Stack Overflow Survey Responses.csv', encoding =  "ISO-8859-1", low_memory=False)
-    df_2017 = pd.read_csv('survey_results_public_2017.csv', encoding =  "ISO-8859-1", low_memory=False) 
+    df_2016 = pd.read_csv('2016_survey_results_public.csv', encoding =  "ISO-8859-1", low_memory=False)
+    df_2017 = pd.read_csv('2017_survey_results_public.csv', encoding =  "ISO-8859-1", low_memory=False) 
 
     # Add year
     df_2016['year'] = 2016
